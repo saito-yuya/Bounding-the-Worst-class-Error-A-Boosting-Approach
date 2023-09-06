@@ -2,17 +2,16 @@
 # Boosting for Bounding the Worst-class Error (AISTATS, 2023)
 
 This is the official implementation of Boosing for Bounding the Worst-class Error in PyTorch.
-The code heavily relies on [LDAM-DRW](https://github.com/kaidic/LDAM-DRW).
+The code heavily relies on [LDAM-DRW](url).
 
 [Paper](url) | [Bibtex](url) | [Slides](url)
 
 ## Overveiw of Our Method
 
 ![Illustration](./images/Overview.png)
-> Overview of our Boosting method. 
+> Overview of our Boosting method.
 
-
-## Requirements
+## Requirements 
 All codes are written by Python 3.7, and 'requirements.txt' contains required Python packages.
 To install requirements:
 
@@ -27,7 +26,7 @@ Create 'data/' directory and download original data in the directory to make imb
 - Imbalanced [Tiny ImageNet](http://cs231n.stanford.edu/tiny-imagenet-200.zip). Download the data first, and convert them by `imbalance_tinyimagenet.py`.
 - The paper also reports results on iNaturalist 2018. We will update the code for iNaturalist 2018 later. -->
 
-## Training 
+## Training
 
 We provide several training examples:
 
