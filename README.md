@@ -1,8 +1,8 @@
-<<<<<<< HEAD
+<!-- <<<<<<< HEAD -->
 
 # Boosting for Bounding the Worst-class Error (AISTATS, 2023)
 
-This is the official implementation of Boosing for Bounding the Worst-class Error in PyTorch.
+This repository provides the offical release of the code package for my paper Boosing for Bounding the Worst-class Error in AISTATS 2023 (url comming soon).
 The code heavily relies on [LDAM-DRW](url).
 
 [Paper](url) | [Bibtex](url) | [Slides](url)
