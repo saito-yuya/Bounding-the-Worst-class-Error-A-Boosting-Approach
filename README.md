@@ -9,7 +9,7 @@ The code heavily relies on [LDAM-DRW](url).
 
 ## Overveiw of Our Method
 
-![Illustration](./images/Overview.png)
+![Illustration](./images/overview.png)
 > Overview of our Boosting method.
 
 ## Requirements 
