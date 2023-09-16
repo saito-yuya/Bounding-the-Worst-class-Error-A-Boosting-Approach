@@ -84,6 +84,6 @@ If you find our paper and repo useful, please cite our paper
     pages     = {hoge}
 }
 ```
-=======
+<!-- =======
 # Boosting for Bounding the Worst-class Error (AISTATS, 2023)
->>>>>>> 71d71e6ba1e292b2b021ccdc18890e7f9db02fb5
+>>>>>>> 71d71e6ba1e292b2b021ccdc18890e7f9db02fb5 -->
