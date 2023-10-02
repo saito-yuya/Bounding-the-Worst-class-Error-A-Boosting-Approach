@@ -1,8 +1,8 @@
 <!-- <<<<<<< HEAD -->
 
-# Boosting for Bounding the Worst-class Error (AISTATS, 2023)
+# Boosting for Bounding the Worst-class Error
 
-This repository provides the offical release of the code package for my paper Boosing for Bounding the Worst-class Error in AISTATS 2023 (url comming soon).
+This repository provides the offical release of the code package for my paper Boosing for Bounding the Worst-class Error　(url comming soon).
 The code heavily relies on [LDAM-DRW](url).
 
 [Paper](url) | [Bibtex](url) | [Slides](url)
@@ -75,7 +75,7 @@ python tinyimage_train.py --dataset tinyimagenet -a resnet18 --loss_type IB --tr
 If you find our paper and repo useful, please cite our paper
 
 ```
-@InProceedings{hoge_2023_AISTATS,
+@InProceedings{hoge,
     author    = {hoge},
     title     = {Boosting for Bounding the Worst-class Error},
     booktitle = {hoge},
