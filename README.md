@@ -10,7 +10,7 @@ The code heavily relies on [LDAM-DRW](url).
 ## Overveiw of Our Method
 
 ![Illustration](./images/overview.png)
-> Overview of our Boosting method.
+> This paper tackles the problem of the worst-class error rate, instead of the standard error rate averaged over all classes. For example, a three-class classification task with class-wise error rates of 10\%, 10\%, and 40\% has a worst-class error rate of 40\%, whereas the average is 20\% under the class-balanced condition. The worst-class error is important in many applications. For example, in a medical image classification task, it would not be acceptable for the malignant tumor class to have a 40\% error rate, while the benign and healthy classes have 10\% error rates. We propose a boosting algorithm that guarantees an upper bound of the worst-class training error and derive its generalization bound. Experimental results show that the algorithm lowers worst-class test error rates while avoiding overfitting to the training set.
 
 ## Requirements 
 All codes are written by Python 3.7, and 'requirements.txt' contains required Python packages.
@@ -31,43 +31,44 @@ Create 'data/' directory and download original data in the directory to make imb
 
 We provide several training examples:
 
-### CIFAR
-- CE baseline (CIFAR-100, long-tailed imabalance ratio of 100)
+### EMNIST
+- CE baseline
 
 ```bash
-python cifar_train.py --dataset cifar100 --loss_type CE --train_rule None --imb_type exp --imb_factor 0.01 --epochs 200 --num_classes 100 --gpu 0
+python emnist_train.py --dataset emnist -a resnet18 --num_in_channels 1 --loss_type CE --train_rule None --epochs 100 --b 512 --num_classes 62 --gpu 0 --early_stop True --stop_mode average 
 ```
-- IB (CIFAR-100, long-tailed imabalance ratio of 100)
+- IB + CB
 
 ```bash
-python cifar_train.py --dataset cifar100 --loss_type IB --train_rule IBReweight --imb_type exp --imb_factor 0.01 --epochs 200 --num_classes 100 --start_ib_epoch 100 --gpu 0
-
+python emnist_train.py --dataset emnist -a resnet18 --num_in_channels 1 --loss_type IB --train_rule CBReweight --epochs 100 --b 512 --start_ib_epoch 50 --num_classes 62 --gpu 0 --early_stop True --stop_mode average 
 ```
-- IB + CB (CIFAR-100, long-tailed imabalance ratio of 100)
+- Naive
 
 ```bash
-python cifar_train.py --dataset cifar100 --loss_type IB --train_rule CBReweight --imb_type exp --imb_factor 0.01 --epochs 200 --num_classes 100 --start_ib_epoch 100 --gpu 0
-
-```
-- IB + Focal (CIFAR-100, long-tailed imabalance ratio of 100)
-
-```bash
-python cifar_train.py --dataset cifar100 --loss_type IBFocal --train_rule IBReweight --imb_type exp --imb_factor 0.01 --epochs 200 --num_classes 100 --start_ib_epoch 100 --gpu 0
-
+python emnist_train.py --dataset emnist -a resnet18 --num_in_channels 1 --loss_type WorstLoss --train_rule None --epochs 100 --b 512 --num_classes 62 --gpu 0 --early_stop True --stop_mode worst
 ```
 
-### Tiny ImageNet
-- CE baseline (long-tailed imabalance ratio of 100)
-
+- Ours
 ```bash
-python tinyimage_train.py --dataset tinyimagenet -a resnet18 --loss_type CE --train_rule None --imb_type exp --imb_factor 0.01 --epochs 100 --lr 0.1  --num_classes 200
-
+python /Ours/emnist_train.py --dataset emnist -a resnet18  --theta 0.3 --num_in_channels 1 --b 512 --num_classes 62 --loss_type CE --gpu 0
 ```
-- IB (long-tailed imabalance ratio of 100)
+
+
+### Medmnist (TisuueMNIST)
+- CE (w /fCW)
 
 ```bash
-python tinyimage_train.py --dataset tinyimagenet -a resnet18 --loss_type IB --train_rule IBReweight --imb_type exp --imb_factor 0.01 --epochs 100 --lr 0.1  --num_classes 200 --start_ib_epoch 50
+python medmnist_train.py --dataset medmnist --data_flag tissuemnist -a resnet18 --num_in_channels 1 --loss_type CE --train_rule fCW --epochs 100 --b 512 --num_classes 8 --gpu 0 --early_stop True --stop_mode average
+```
+- Focal
 
+```bash
+python medmnist_train.py --dataset medmnist --data_flag tissuemnist -a resnet18 --num_in_channels 1 --loss_type Focal --epochs 100 --b 512 --num_classes 8 --gpu 0 --early_stop True 
+```
+
+- Ours
+```bash
+python /Ours/medmnist_train.py --dataset medmnist --data_flag tissuemnist -a resnet18 --theta 0.5 --num_in_channels 1 --b 512 --num_classes 8 --loss_type CE --gpu 0 
 ```
 
 ## Citation
