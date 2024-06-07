@@ -23,7 +23,7 @@ parser.add_argument('--lr', '--learning-rate', default=1e-3, type=float,metavar=
 parser.add_argument('--momentum', default=0.9, type=float, metavar='M',help='momentum')
 parser.add_argument('--wd', '--weight-decay', default=2e-4, type=float,metavar='W', help='weight decay (default: 1e-4)',dest='weight_decay')
 parser.add_argument('-p', '--print_freq', default=100, type=int,metavar='N', help='print frequency (default: 100)')
-# parser.add_argument('--resume', default='', type=str, metavar='PATH',help='path to latest checkpoint (default: none)')
+parser.add_argument('--resume', default='', type=str, metavar='PATH',help='path to latest checkpoint (default: none)')
 # parser.add_argument('-e', '--evaluate', dest='evaluate', action='store_true',help='evaluate model on validation set')
 parser.add_argument('--pretrained', dest='pretrained', action='store_true',help='use pre-trained model')
 parser.add_argument('--gpu', default=0, type=int,help='GPU id to use.')
