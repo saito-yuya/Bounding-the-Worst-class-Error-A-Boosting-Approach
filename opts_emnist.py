@@ -5,7 +5,7 @@ parser = argparse.ArgumentParser(description='PyTorch EMNIST(by-class) Training'
 parser.add_argument('--seed', default=0, type=int,help='seed for initializing training. ')
 parser.add_argument('--dataset', default='emnist', help='dataset setting')
 parser.add_argument('-a', '--arch', metavar='ARCH', default='resnet18')
-# parser.add_argument('--num_in_channels', default=1, type=int, help='input channels 1 or 3 for medmnist ')
+parser.add_argument('--num_in_channels', default=1, type=int, help='input channels 1 or 3 for medmnist ')
 parser.add_argument('--num_classes', default=62, type=int, help='number of classes ')
 parser.add_argument('--loss_type', default="CE", type=str, help='loss type')
 parser.add_argument('--train_rule', default='None', type=str, help='data sampling strategy for train loader')
