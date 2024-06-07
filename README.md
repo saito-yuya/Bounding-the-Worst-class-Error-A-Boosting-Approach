@@ -10,15 +10,38 @@ The code heavily relies on [LDAM-DRW](https://github.com/kaidic/LDAM-DRW).
 ## Overveiw of Our Method
 
 ![Illustration](./images/overview_toy.png)
-> This paper tackles the problem of the worst-class error rate, instead of the standard error rate averaged over all classes. For example, a three-class classification task with class-wise error rates of 10%, 10%, and 40% has a worst-class error rate of 40%, whereas the average is 20% under the class-balanced condition. The worst-class error is important in many applications. For example, in a medical image classification task, it would not be acceptable for the malignant tumor class to have a 40% error rate, while the benign and healthy classes have 10% error rates. We propose a boosting algorithm that guarantees an upper bound of the worst-class training error and derive its generalization bound. Experimental results show that the algorithm lowers worst-class test error rates while avoiding overfitting to the training set.
+> This paper first tackles the problem of the worst-class error rate instead of the standard error rate averaged over all classes. For example, a three-class classification task with class-wise error rates of 10%, 10%, and 40% has a worst-class error rate of 40\%, whereas the average is 20% under the class-balanced condition. To avoid overfitting in worst-class error minimization using a rich hypothesis set such as Deep Neural Networks (DNNs), we design a problem formulation for bounding the worst-class error instead of achieving zero worst-class error. Moreover, to correctly bound the worst-class error, we propose a boosting approach that ensembles DNNs.
+We provide training and generalization worst-class error bounds, which also provide new insight into imbalanced classification tasks. Experimental results show that the algorithm reduces worst-class test error rates while avoiding overfitting to the training set.
 
 ## Requirements 
-All codes are written by Python 3.7, and 'requirements.txt' contains required Python packages.
-To install requirements:
+<!-- All codes are written by Python 3.7, and 'requirements.txt' contains required Python packages. -->
+- python >= 3.8
+- cuda & cudnn
+
+### prerequisitions
+- python 3.8.17
+- seaborn  0.12.2
+- scikit-learn  1.0.2
+- pandas 2.0.3
+- Pillow 10.0.0
+- torch  2.0.1
+- torchvision 0.15.2
+- pytorch_transformers
+- tqdm  4.65.0
+- opencv-python 4.8.0.74
+- medmnist 2.2.2
+
+
+To install fast-setup of this code:
 
 ```setup
+# pytorch install 
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 pip install -r requirements.txt
 ```
+
+
+
 <!-- 
 ## Dataset
 
@@ -27,9 +50,9 @@ Create 'data/' directory and download original data in the directory to make imb
 - Imbalanced [Tiny ImageNet](http://cs231n.stanford.edu/tiny-imagenet-200.zip). Download the data first, and convert them by `imbalance_tinyimagenet.py`.
 - The paper also reports results on iNaturalist 2018. We will update the code for iNaturalist 2018 later. -->
 
-## Training
+## Training & Test
 
-We provide several training examples:
+We provide several examples:
 
 ### EMNIST
 - CE baseline
@@ -50,7 +73,7 @@ python emnist_train.py --dataset emnist -a resnet18 --num_in_channels 1 --loss_t
 
 - Ours
 ```bash
-python /Ours/emnist_train.py --dataset emnist -a resnet18  --theta 0.3 --num_in_channels 1 --b 512 --num_classes 62 --loss_type CE --gpu 0
+python ./Ours/emnist_train.py --dataset emnist -a resnet18  --theta 0.3 --num_in_channels 1 --b 512 --num_classes 62 --loss_type CE --gpu 0
 ```
 
 
@@ -68,7 +91,7 @@ python medmnist_train.py --dataset medmnist --data_flag tissuemnist -a resnet18 
 
 - Ours
 ```bash
-python /Ours/medmnist_train.py --dataset medmnist --data_flag tissuemnist -a resnet18 --theta 0.5 --num_in_channels 1 --b 512 --num_classes 8 --loss_type CE --gpu 0 
+python ./Ours/medmnist_train.py --dataset medmnist --data_flag tissuemnist -a resnet18 --theta 0.5 --num_in_channels 1 --b 512 --num_classes 8 --loss_type CE --gpu 0 
 ```
 
 ## Citation
