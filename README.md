@@ -1,16 +1,16 @@
 <!-- <<<<<<< HEAD -->
 
-# Boosting for Bounding the Worst-class Error
+# Bounding the Worst-class Error: A Boosting Approach
 
 This repository provides the offical release of the code package for my paper Boosing for Bounding the Worst-class Error　(url comming soon).
-The code heavily relies on [LDAM-DRW](url).
+The code heavily relies on [LDAM-DRW](https://github.com/kaidic/LDAM-DRW).
 
-[Paper](url) | [Bibtex](url) | [Slides](url)
+[Paper](https://arxiv.org/abs/2310.14890) | [Bibtex](url) | [Slides](url)
 
 ## Overveiw of Our Method
 
-![Illustration](./images/overview.png)
-> This paper tackles the problem of the worst-class error rate, instead of the standard error rate averaged over all classes. For example, a three-class classification task with class-wise error rates of 10\%, 10\%, and 40\% has a worst-class error rate of 40\%, whereas the average is 20\% under the class-balanced condition. The worst-class error is important in many applications. For example, in a medical image classification task, it would not be acceptable for the malignant tumor class to have a 40\% error rate, while the benign and healthy classes have 10\% error rates. We propose a boosting algorithm that guarantees an upper bound of the worst-class training error and derive its generalization bound. Experimental results show that the algorithm lowers worst-class test error rates while avoiding overfitting to the training set.
+![Illustration](./images/overview_toy.png)
+> This paper tackles the problem of the worst-class error rate, instead of the standard error rate averaged over all classes. For example, a three-class classification task with class-wise error rates of 10%, 10%, and 40% has a worst-class error rate of 40%, whereas the average is 20% under the class-balanced condition. The worst-class error is important in many applications. For example, in a medical image classification task, it would not be acceptable for the malignant tumor class to have a 40% error rate, while the benign and healthy classes have 10% error rates. We propose a boosting algorithm that guarantees an upper bound of the worst-class training error and derive its generalization bound. Experimental results show that the algorithm lowers worst-class test error rates while avoiding overfitting to the training set.
 
 ## Requirements 
 All codes are written by Python 3.7, and 'requirements.txt' contains required Python packages.
@@ -78,7 +78,7 @@ If you find our paper and repo useful, please cite our paper
 ```
 @InProceedings{hoge,
     author    = {hoge},
-    title     = {Boosting for Bounding the Worst-class Error},
+    title     = {Bounding the Worst-class Error: A Boosting Approach},
     booktitle = {hoge},
     month     = {hoge},
     year      = {hoge},
