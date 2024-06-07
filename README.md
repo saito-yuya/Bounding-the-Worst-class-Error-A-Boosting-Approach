@@ -53,30 +53,38 @@ Create 'data/' directory and download original data in the directory to make imb
 
 We provide several examples:
 
-### EMNIST
+### CIFAR10
 - CE baseline
 
 ```bash
-python emnist_train.py --dataset emnist -a resnet18 --num_in_channels 1 --loss_type CE --train_rule None --epochs 100 --b 512 --num_classes 62 --gpu 0 --early_stop True --stop_mode average 
+python cifar_train.py --dataset cifar10 -a resnet32 --loss_type CE --train_rule None --epochs 200 --b 512 --num_classes 10 --gpu 0 --early_stop True --stop_mode average
 ```
 - IB + CB
 
 ```bash
-python emnist_train.py --dataset emnist -a resnet18 --num_in_channels 1 --loss_type IB --train_rule CBReweight --epochs 100 --b 512 --start_ib_epoch 50 --num_classes 62 --gpu 0 --early_stop True --stop_mode average 
+python cifar_train.py --dataset cifar10 -a resnet32 --loss_type IB --train_rule CBReweight --epochs 200 --b 512 --start_ib_epoch 50 --num_classes 10 --gpu 0 --early_stop True --stop_mode average 
 ```
 - Naive
 
 ```bash
-python emnist_train.py --dataset emnist -a resnet18 --num_in_channels 1 --loss_type WorstLoss --train_rule None --epochs 100 --b 512 --num_classes 62 --gpu 0 --early_stop True --stop_mode worst
+python cifar_train.py --dataset cifar10 -a resnet32 --loss_type WorstLoss --train_rule None --epochs 200 --b 512 --num_classes 10 --gpu 0 --early_stop True --stop_mode worst
 ```
 
 - Ours
 ```bash
-python ./Ours/emnist_train.py --dataset emnist -a resnet18  --theta 0.3 --num_in_channels 1 --b 512 --num_classes 62 --loss_type CE --gpu 0
+python ./Ourscifar_train.py --dataset cifar10 -a resnet32 --loss_type CE ---theta 0.9 --b 512 --num_classes 10 --gpu 0 
+
 ```
 
 
 ### Medmnist (TisuueMNIST)
+Fast of all, changes the code of ```models/__init__.py``` and run the listed example code.
+
+```bash
+# from .resnet_cifar import * 
+from .resnet_med_resnet_s import *
+```
+
 - CE (w /fCW)
 
 ```bash
