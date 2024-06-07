@@ -5,7 +5,7 @@ import torch.nn.functional as F
 import numpy as np
 from sklearn.metrics import confusion_matrix
 # from Ours.opts import parser
-from Ours.opts_medmnist import get_args
+from opts_medmnist import get_args
 
 # args = parser.parse_args()
 args = get_args()
