@@ -1,7 +1,7 @@
 
 from utils import *
 import models
-from Ours.opts_medmnist import get_args
+from opts_medmnist import get_args
 import medmnist
 from medmnist import INFO, Evaluator
 sys.path.append(os.path.join(os.path.dirname(__file__), '../../..'))
@@ -127,12 +127,12 @@ if __name__ == '__main__':
     criterion = nn.CrossEntropyLoss(weight=weight_tmp).to(device)
     optimizer = torch.optim.Adam(model.parameters(), lr=args.lr)
 
-    OP_init(model,train_loader,optimizer,criterion,device)
+    OP_init(model,train_loader,optimizer,weight_tmp,args.loss_type,device)
 
     for t in range(round_num):
         model = Network_init(model,model_path + '/check_point.pt',device)
 
-        train_acc,weak_model,y_preds,rt = train(model,train_loader,num_classes,weight_tmp,optimizer,criterion,args.max_epoch,theta,gamma,log_training,device)
+        train_acc,weak_model,y_preds,rt = train(model,train_loader,num_classes,weight_tmp,optimizer,args.loss_type,args.max_epoch,theta,gamma,log_training,device)
 
         torch.save(weak_model.state_dict(), model_path + f'/weak_model({t}).pt')
 

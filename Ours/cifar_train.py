@@ -8,6 +8,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '../../..'))
 if __name__ == '__main__':
     args = get_args()
     theta = args.theta
+    num_classes = args.num_classes
     gamma =  (math.floor(0.8*num_classes)/num_classes) - (1/2) - args.eps
     torch_fix_seed(args.seed)
     args.store_name = '_'.join([args.dataset, args.arch,args.imb_type,str(args.imb_factor), str(theta), str(gamma)])
@@ -18,7 +19,6 @@ if __name__ == '__main__':
 
 
     print("theta:" ,args.theta)
-    print("gamma:",args.gamma)
     print("device:",args.gpu)
 
     device = "cuda:0" if torch.cuda.is_available() else "cpu"
@@ -71,8 +71,7 @@ if __name__ == '__main__':
     weight,weak_preds = [],[]
 
     print("=> creating model '{}'".format(args.arch))
-    classes = args.classes
-    model = models.__dict__[args.arch](num_classes=classes, use_norm=False)
+    model = models.__dict__[args.arch](num_classes=num_classes, use_norm=False)
     torch.save(model.state_dict(), model_path + '/check_point.pt')
     
     if args.gpu is not None:
@@ -84,23 +83,23 @@ if __name__ == '__main__':
 
 
     #round Number(The number of weak-learner)
-    round_num = math.ceil(2*math.log(classes)/(gamma)**2)
+    round_num = math.ceil(2*math.log(num_classes)/(gamma)**2)
     # round_num = 3
 
-    weight_tmp = torch.tensor([1/classes]*classes)
+    weight_tmp = torch.tensor([1/num_classes]*num_classes)
     weight.append(weight_tmp.to('cpu').detach().numpy().copy().tolist())
 
     criterion = nn.CrossEntropyLoss(weight=weight_tmp).to(device)
     optimizer = torch.optim.Adam(model.parameters(), lr=args.lr)
-    OP_init(model,train_loader,optimizer,criterion,device)
+    OP_init(model,train_loader,optimizer,weight_tmp,args.loss_type,device)
 
     for t in range(round_num):
         model = Network_init(model,model_path + '/check_point.pt',device)
-        train_acc,weak_model,y_preds,rt = train(model,train_loader,classes,weight_tmp,optimizer,criterion,args.max_epoch,theta,gamma,log_training,device)
+        train_acc,weak_model,y_preds,rt = train(model,train_loader,num_classes,weight_tmp,optimizer,args.loss_type,args.max_epoch,theta,gamma,log_training,device)
         
         torch.save(weak_model.state_dict(), model_path + f'/weak_model({t}).pt')
 
-        weight_tmp = Hedge(weight_tmp,rt,classes,round_num,device)
+        weight_tmp = Hedge(weight_tmp,rt,num_classes,round_num,device)
         weight.append(weight_tmp.to('cpu').detach().numpy().copy().tolist())
 
     print("############################ Finish Main roop ##############################")
@@ -168,7 +167,7 @@ if __name__ == '__main__':
     print('classification report', classification_report(test_label,test_h))
 
     test_out = []
-    for i in range(classes):
+    for i in range(num_classes):
         class_acc = (ans[i] / test_correct[i])
         test_out.append(class_acc)
     print(test_out)
