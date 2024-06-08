@@ -1,6 +1,6 @@
 import argparse
 from utils import *
-import models_med
+import models
 from losses import *
 import medmnist
 from medmnist import INFO, Evaluator
@@ -49,9 +49,9 @@ def main_worker(gpu, ngpus_per_node, args):
     print("=> creating model '{}'".format(args.arch))
     num_classes = args.num_classes
     if  args.arch == 'resnet18':
-        model =  models_med.resnet18(in_channels = args.num_in_channels, num_classes=num_classes)
+        model =  models.resnet18(in_channels = args.num_in_channels, num_classes=num_classes)
     elif args.arch == 'resnet50':
-        model =  models_med.resnet50(in_channels = args.num_in_channels, num_classes=num_classes)
+        model =  models.resnet50(in_channels = args.num_in_channels, num_classes=num_classes)
     else:
         raise NotImplementedError
 
@@ -117,7 +117,28 @@ def main_worker(gpu, ngpus_per_node, args):
         test_dataset, batch_size=args.batch_size, shuffle=False,
         num_workers=args.workers, pin_memory=True)
     
-    cls_num_list = train_dataset.get_cls_num_list()
+    print(train_dataset)
+    print("===================")
+    print(val_dataset)
+    print("===================")
+    print(test_dataset)
+    cls_num_list = []
+    print("Train Dataset")
+    for num in range(0, num_classes):
+        labels = np.sum(train_dataset.labels == num)
+        print("Class {} : {}".format(num, labels))
+        cls_num_list.append(labels)
+
+    print("===================")
+    print("Val Dataset")
+    for num in range(0, num_classes):
+        labels = np.sum(val_dataset.labels == num)
+    print("All : {}".format(sum))
+    print("===================")
+    print("Test Dataset")
+    for num in range(0, num_classes):
+        labels = np.sum(test_dataset.labels == num)
+
     print("Train : cls_num_list",cls_num_list)
     args.cls_num_list = cls_num_list
 

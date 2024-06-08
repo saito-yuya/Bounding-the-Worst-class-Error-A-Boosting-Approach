@@ -21,7 +21,7 @@ We provide training and generalization worst-class error bounds, which also prov
 ### prerequisitions
 - python 3.8.17
 - seaborn  0.12.2
-- scikit-learn  1.0.2
+- scikit-learn  1.3.0
 - pandas 2.0.3
 - Pillow 10.0.0
 - torch  2.0.1
@@ -30,6 +30,7 @@ We provide training and generalization worst-class error bounds, which also prov
 - tqdm  4.65.0
 - opencv-python 4.8.0.74
 - medmnist 2.2.2
+- numpy 1.22.3
 
 
 To install fast-setup of this code:
