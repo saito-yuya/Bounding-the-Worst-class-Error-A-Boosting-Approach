@@ -2,8 +2,8 @@
 
 # Bounding the Worst-class Error: A Boosting Approach
 
-This repository provides the offical release of the code package for my paper Boosing for Bounding the Worst-class Error　(url comming soon).
-The code heavily relies on [LDAM-DRW](https://github.com/kaidic/LDAM-DRW).
+This repository provides the offical release of the code package for my paper [Bounding the Worst-class Error: A Boosting Approach](https://arxiv.org/abs/2310.14890) in Pytorch.
+The code heavily relies on [LDAM-DRW](https://github.com/kaidic/LDAM-DRW), and [IB-Loss](https://github.com/pseulki/IB-Loss).
 
 [Paper](https://arxiv.org/abs/2310.14890) | [Bibtex](url) | [Slides](url)
 
@@ -42,13 +42,12 @@ pip install -r requirements.txt
 ```
 
 
-<!-- 
+
 ## Dataset
 
-Create 'data/' directory and download original data in the directory to make imbalanced versions. 
+Create a 'data/' directory and download the original data into this directory to generate imbalanced versions.
 - Imbalanced [CIFAR](https://www.cs.toronto.edu/~kriz/cifar.html). The original data will be downloaded and converted by `imbalancec_cifar.py`.
-- Imbalanced [Tiny ImageNet](http://cs231n.stanford.edu/tiny-imagenet-200.zip). Download the data first, and convert them by `imbalance_tinyimagenet.py`.
-- The paper also reports results on iNaturalist 2018. We will update the code for iNaturalist 2018 later. -->
+- The paper also reports results on [Tiny ImageNet](http://cs231n.stanford.edu/tiny-imagenet-200.zip), [EMNIST](https://www.nist.gov/itl/products-and-services/emnist-dataset) . We will update the code for Tiny ImageNet & EMNIST later.
 
 ## Training & Test
 
