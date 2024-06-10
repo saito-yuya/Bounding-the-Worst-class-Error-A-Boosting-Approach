@@ -105,7 +105,6 @@ python ./Ours/medmnist_train.py --dataset medmnist --data_flag tissuemnist -a re
 
 If you find our paper and repo useful, please cite our paper
 
-```
 <!-- @InProceedings{hoge,
     author    = {hoge},
     title     = {Bounding the Worst-class Error: A Boosting Approach},
@@ -114,7 +113,7 @@ If you find our paper and repo useful, please cite our paper
     year      = {hoge},
     pages     = {hoge}
 } -->
-
+```
 @misc{saito2023boosting,
       title={Boosting for Bounding the Worst-class Error}, 
       author={Yuya Saito and Shinnosuke Matsuo and Seiichi Uchida and Daiki Suehiro},
@@ -122,7 +121,6 @@ If you find our paper and repo useful, please cite our paper
       eprint={2310.14890},
       archivePrefix={arXiv},
       primaryClass={stat.ML}
-}
 ```
 <!-- =======
 # Boosting for Bounding the Worst-class Error (AISTATS, 2023)
