@@ -45,7 +45,7 @@ pip install -r requirements.txt
 
 ## Dataset
 
-Create a 'data/' directory and download the original data into this directory to generate imbalanced versions.
+Create a ```data/``` directory and download the original data into this directory to generate imbalanced versions.
 - Imbalanced [CIFAR](https://www.cs.toronto.edu/~kriz/cifar.html). The original data will be downloaded and converted by `imbalancec_cifar.py`.
 - The paper also reports results on [Tiny ImageNet](http://cs231n.stanford.edu/tiny-imagenet-200.zip), [EMNIST](https://www.nist.gov/itl/products-and-services/emnist-dataset) . We will update the code for Tiny ImageNet & EMNIST later.
 
