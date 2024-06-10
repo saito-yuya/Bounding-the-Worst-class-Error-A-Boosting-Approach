@@ -93,7 +93,7 @@ python medmnist_train.py --dataset medmnist --data_flag tissuemnist -a resnet18 
 - Focal
 
 ```bash
-python medmnist_train.py --dataset medmnist --data_flag tissuemnist -a resnet18 --num_in_channels 1 --loss_type Focal --epochs 100 --b 512 --num_classes 8 --gpu 0 --early_stop True 
+python medmnist_train.py --dataset medmnist --data_flag tissuemnist -a resnet18 --num_in_channels 1 --loss_type Focal --epochs 100 --b 512 --num_classes 8 --gpu 0 --early_stop True --stop_mode average 
 ```
 
 - Ours
