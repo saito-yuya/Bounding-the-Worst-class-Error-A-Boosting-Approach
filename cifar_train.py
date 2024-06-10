@@ -80,7 +80,7 @@ def main_worker(gpu, ngpus_per_node, args):
 
     if args.early_stop != None:
         print("Eary_stopping is working")
-        earlystopping = EarlyStopping(patience=args.epochs, verbose=True, path = f'{args.dataset},{args.loss_type},{args.train_rule}.pt')
+        earlystopping = EarlyStopping(patience=args.epochs, verbose=True, path = f'{args.root_model}/{args.store_name}/{args.dataset},{args.loss_type},{args.train_rule}.pt')
 
     # Data loading code
     transform_train = transforms.Compose([
@@ -204,7 +204,7 @@ def main_worker(gpu, ngpus_per_node, args):
             if earlystopping.early_stop or epoch == args.epochs - 1: 
                 print("==================== Early Stopping ======================")
                 print("Epochs :",epoch)
-                model.load_state_dict(torch.load(f'{args.dataset},{args.loss_type},{args.train_rule}.pt'))
+                model.load_state_dict(torch.load(f'{args.root_model}/{args.store_name}/{args.dataset},{args.loss_type},{args.train_rule}.pt'))
                 validate(test_loader, model, criterion, criterion_ib, epoch, args, log_testing,tf_writer=None,flag='test')
                 print("======================== All process are stopped ============================")
                 sys.exit()
