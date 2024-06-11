@@ -121,6 +121,7 @@ If you find our paper and repo useful, please cite our paper
       eprint={2310.14890},
       archivePrefix={arXiv},
       primaryClass={stat.ML}
+      }
 ```
 <!-- =======
 # Boosting for Bounding the Worst-class Error (AISTATS, 2023)
