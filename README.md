@@ -1,11 +1,10 @@
 <!-- <<<<<<< HEAD -->
 
-# Bounding the Worst-class Error: A Boosting Approach
+# Bounding the Worst-class Error: A Boosting Approach [submitted to IJCNN2025] 
 
 This repository provides the offical release of the code package for my paper [Bounding the Worst-class Error: A Boosting Approach] in Pytorch.
-The code heavily relies on [LDAM-DRW](https://github.com/kaidic/LDAM-DRW), and [IB-Loss](https://github.com/pseulki/IB-Loss).
 
-[Paper] | [Bibtex](url) | [Slides](url)
+[Paper] | [Bibtex] | [Slides]
 
 ## Overveiw of Our Method
 
@@ -70,6 +69,17 @@ python cifar_train.py --dataset cifar10 -a resnet32 --loss_type IB --train_rule 
 python cifar_train.py --dataset cifar10 -a resnet32 --loss_type WorstLoss --train_rule None --epochs 200 --b 512 --num_classes 10 --gpu 0 --early_stop True --stop_mode worst
 ```
 
+- VS
+
+```bash
+python cifar_train.py --dataset cifar10 -a resnet32 --loss_type VS --train_rule None --epochs 200 --b 512 --num_classes 10 --gpu 0 --early_stop True --gamma 0.15 --tau 1.25 --stop_mode average
+```
+
+- LA
+
+```bash
+python cifar_train.py --dataset cifar10 -a resnet32 --loss_type LA --train_rule None --epochs 200 --b 512 --num_classes 10 --gpu 0 --early_stop True --gamma 0.0 --tau 2.25 --stop_mode average
+
 - Ours
 ```bash
 python ./Ours/cifar_train.py --dataset cifar10 -a resnet32 --theta 0.9 --loss_type CE --b 512 --num_classes 10 --gpu 0 
@@ -96,23 +106,18 @@ python medmnist_train.py --dataset medmnist --data_flag tissuemnist -a resnet18 
 python medmnist_train.py --dataset medmnist --data_flag tissuemnist -a resnet18 --num_in_channels 1 --loss_type Focal --epochs 100 --b 512 --num_classes 8 --gpu 0 --early_stop True --stop_mode average 
 ```
 
+- CDT
+
+```bash
+python medmnist_train.py --dataset medmnist --data_flag tissuemnist -a resnet18 --num_in_channels 1 --loss_type CDT --epochs 100 --b 512 --num_classes 8 --gpu 0 --early_stop True --gamma 0.4 --tau 0.0 --stop_mode average 
+```
+
 - Ours
 ```bash
 python ./Ours/medmnist_train.py --dataset medmnist --data_flag tissuemnist -a resnet18 --theta 0.6 --num_in_channels 1 --b 512 --num_classes 8 --loss_type CE --gpu 0 
 ```
 
-## Citation
 
-If you find our paper and repo useful, please cite our paper
-
-<!-- @InProceedings{hoge,
-    author    = {hoge},
-    title     = {Bounding the Worst-class Error: A Boosting Approach},
-    booktitle = {hoge},
-    month     = {hoge},
-    year      = {hoge},
-    pages     = {hoge}
-} -->
 ```
 
 ```
