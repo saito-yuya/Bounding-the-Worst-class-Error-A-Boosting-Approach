@@ -2,10 +2,10 @@
 
 # Bounding the Worst-class Error: A Boosting Approach
 
-This repository provides the offical release of the code package for my paper [Bounding the Worst-class Error: A Boosting Approach](https://arxiv.org/abs/2310.14890) in Pytorch.
+This repository provides the offical release of the code package for my paper [Bounding the Worst-class Error: A Boosting Approach] in Pytorch.
 The code heavily relies on [LDAM-DRW](https://github.com/kaidic/LDAM-DRW), and [IB-Loss](https://github.com/pseulki/IB-Loss).
 
-[Paper](https://arxiv.org/abs/2310.14890) | [Bibtex](url) | [Slides](url)
+[Paper] | [Bibtex](url) | [Slides](url)
 
 ## Overveiw of Our Method
 
