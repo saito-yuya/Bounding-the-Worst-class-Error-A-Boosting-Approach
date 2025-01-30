@@ -79,8 +79,10 @@ python cifar_train.py --dataset cifar10 -a resnet32 --loss_type VS --train_rule 
 
 ```bash
 python cifar_train.py --dataset cifar10 -a resnet32 --loss_type LA --train_rule None --epochs 200 --b 512 --num_classes 10 --gpu 0 --early_stop True --gamma 0.0 --tau 2.25 --stop_mode average
+```
 
 - Ours
+- 
 ```bash
 python ./Ours/cifar_train.py --dataset cifar10 -a resnet32 --theta 0.9 --loss_type CE --b 512 --num_classes 10 --gpu 0 
 
