@@ -82,7 +82,7 @@ python cifar_train.py --dataset cifar10 -a resnet32 --loss_type LA --train_rule 
 ```
 
 - Ours
-- 
+  
 ```bash
 python ./Ours/cifar_train.py --dataset cifar10 -a resnet32 --theta 0.9 --loss_type CE --b 512 --num_classes 10 --gpu 0 
 
@@ -115,6 +115,7 @@ python medmnist_train.py --dataset medmnist --data_flag tissuemnist -a resnet18 
 ```
 
 - Ours
+
 ```bash
 python ./Ours/medmnist_train.py --dataset medmnist --data_flag tissuemnist -a resnet18 --theta 0.6 --num_in_channels 1 --b 512 --num_classes 8 --loss_type CE --gpu 0 
 ```
