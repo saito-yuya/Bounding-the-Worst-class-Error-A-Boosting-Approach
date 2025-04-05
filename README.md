@@ -1,6 +1,6 @@
 <!-- <<<<<<< HEAD -->
 
-# Bounding the Worst-class Error: A Boosting Approach [submitted to IJCNN2025] 
+# Bounding the Worst-class Error: A Boosting Approach 
 
 This repository provides the offical release of the code package for my paper [Bounding the Worst-class Error: A Boosting Approach] in Pytorch.
 
@@ -122,10 +122,14 @@ python medmnist_train.py --dataset medmnist --data_flag tissuemnist -a resnet18 
 python ./Ours/medmnist_train.py --dataset medmnist --data_flag tissuemnist -a resnet18 --theta 0.6 --num_in_channels 1 --b 512 --num_classes 8 --loss_type CE --gpu 0 
 ```
 
-
+## Citation
+If you find our paper and repo useful, please cite our paper: 
+```none
+@inproceedings{,
+  title={},
+  author={},
+  booktitle={},
+  pages={},
+  year={}
+}
 ```
-
-```
-<!-- =======
-# Boosting for Bounding the Worst-class Error (AISTATS, 2023)
->>>>>>> 71d71e6ba1e292b2b021ccdc18890e7f9db02fb5 -->
